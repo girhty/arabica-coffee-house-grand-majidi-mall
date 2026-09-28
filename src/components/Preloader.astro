@@ -1,0 +1,37 @@
+---
+---
+<div id="preloader" class="fixed inset-0 z-[100] bg-espresso-900 flex flex-col justify-between p-6 sm:p-10">
+  <div class="flex items-center gap-3">
+    <span class="font-mono text-xs tracking-wider text-white/30 uppercase">// Now Brewing</span>
+    <span class="h-px flex-1 bg-white/10"></span>
+  </div>
+
+  <div class="flex flex-col items-center justify-center flex-1 relative">
+    <div class="font-mono text-[80px] sm:text-[120px] md:text-[160px] font-bold tabular-nums tracking-tighter text-white leading-none">
+      <span id="preloader-counter">000</span>
+    </div>
+    <!-- Cup SVG -->
+    <div class="mt-8 relative w-16 h-20 sm:w-20 sm:h-24">
+      <svg viewBox="0 0 60 72" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+        <defs>
+          <linearGradient id="coffeeGrad" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#2C1A11"/>
+            <stop offset="50%" stop-color="#6E3E22"/>
+            <stop offset="100%" stop-color="#C69B6E"/>
+          </linearGradient>
+        </defs>
+        <path d="M8 8 H48 L44 64 Q44 68 40 68 H16 Q12 68 12 64 Z" stroke="white" stroke-width="1.5" fill="none" opacity="0.3"/>
+        <rect id="cup-fill" x="10" y="10" width="36" height="54" rx="2" fill="url(#coffeeGrad)" style="clip-path: inset(100% 0 0 0); transition: clip-path 0.1s ease-out;"/>
+        <path d="M48 18 Q60 18 58 30 Q56 42 48 42" stroke="white" stroke-width="1.5" fill="none" opacity="0.3"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="flex items-end justify-between">
+    <div>
+      <p class="font-display text-sm sm:text-base font-bold tracking-tight uppercase">Arabica</p>
+      <p class="font-mono text-[10px] text-white/30 tracking-wider uppercase">Coffee House</p>
+    </div>
+    <p class="font-mono text-[10px] text-white/20 tracking-wider">EST. 2018</p>
+  </div>
+</div>

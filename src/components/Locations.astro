@@ -1,0 +1,99 @@
+---
+const locations = [
+  { name: 'Boulevard', area: 'Erbil', status: 'Open' },
+  { name: 'Grand Majidi Mall', area: 'Erbil', status: 'Open' },
+  { name: 'Empire Square', area: 'Erbil', status: 'Open' },
+  { name: 'Trade Center', area: 'Erbil', status: 'Open' },
+  { name: 'Garden Avenue', area: 'Sulaymaniyah', status: 'Open' },
+  { name: 'Duhok Mall', area: 'Duhok', status: 'Coming Soon' },
+];
+---
+<section id="locations" class="relative bg-bone-100 py-24 sm:py-32 overflow-hidden">
+  <!-- Reverse swirl -->
+  <div class="absolute inset-0 opacity-[0.025]">
+    <svg viewBox="0 0 1440 800" class="w-full h-full" preserveAspectRatio="xMidYMid slice">
+      <path d="M1540,200 C1200,500 1000,100 700,400 C400,700 200,200 -100,350" stroke="#070707" stroke-width="180" fill="none" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <div class="relative z-10 max-w-[1440px] mx-auto px-6 sm:px-10">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      
+      <!-- Left: Clock Dial Visual -->
+      <div class="lg:col-span-5 flex justify-center order-1 lg:order-1">
+        <div class="relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] reveal-item">
+          <!-- Clock face -->
+          <svg viewBox="0 0 340 340" class="w-full h-full animate-spin-slow" style="animation-duration:60s;">
+            <circle cx="170" cy="170" r="160" fill="none" stroke="#070707" stroke-width="1" opacity="0.1"/>
+            <circle cx="170" cy="170" r="130" fill="none" stroke="#070707" stroke-width="0.5" opacity="0.06"/>
+            <!-- Hour markers -->
+            {Array.from({length:12}).map((_, i) => {
+              const angle = (i * 30) * Math.PI / 180;
+              const x1 = 170 + 145 * Math.sin(angle);
+              const y1 = 170 - 145 * Math.cos(angle);
+              const x2 = 170 + 155 * Math.sin(angle);
+              const y2 = 170 - 155 * Math.cos(angle);
+              const tx = 170 + 125 * Math.sin(angle);
+              const ty = 170 - 125 * Math.cos(angle);
+              return (
+                <g>
+                  <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#070707" stroke-width="1.5" opacity="0.15"/>
+                  <text x={tx} y={ty} textAnchor="middle" dominantBaseline="central" class="font-mono" fill="#070707" opacity="0.2" fontSize="10" fontFamily="Space Mono, monospace">{String(i === 0 ? 12 : i).padStart(2, '0')}</text>
+                </g>
+              );
+            })}
+            <!-- Clock hands -->
+            <line x1="170" y1="170" x2="170" y2="60" stroke="#D58C3D" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+            <line x1="170" y1="170" x2="230" y2="130" stroke="#070707" stroke-width="1" stroke-linecap="round" opacity="0.15"/>
+            <circle cx="170" cy="170" r="4" fill="#D58C3D" opacity="0.8"/>
+          </svg>
+          <!-- Center cup overlay -->
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-amber-500/30 shadow-lg">
+            <img
+              src="https://lh3.googleusercontent.com/grass-cs/AABkmLdz5g3qTuDMJsbmH5ypYZaSSdtTXjgTohAn1P7s9K8JBKc-St5Vs2QqNf5QAVpM2hLeLxeHb85Lal3v-9zZPQe_2HMEF4baiWvVhBgbFxUTuU8H2XldYN9XGDQuAMvQhGQ5cP1Pdw=w300-h450-p-k-no"
+              alt="Arabica Signature Drink"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Location Info -->
+      <div class="lg:col-span-7 order-2 lg:order-2">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse-dot shadow-[0_0_10px_rgba(213,140,61,0.5)]"></span>
+          <p class="font-mono text-[11px] tracking-[0.2em] text-espresso-900/40 uppercase">Our Locations</p>
+        </div>
+
+        <h2 class="clip-reveal font-display text-[32px] sm:text-[40px] md:text-[48px] font-black tracking-tighter leading-[0.95] text-espresso-900 uppercase mb-10" style="transition-delay:0.2s;">
+          FIND YOUR<br/>NEAREST BRANCH
+        </h2>
+
+        <div class="grid sm:grid-cols-2 gap-x-8 gap-y-5">
+          {locations.map((loc, i) => (
+            <div class="reveal-item group flex items-start gap-4 py-3 border-b border-espresso-900/8" style={`transition-delay: ${0.1 + i * 0.08}s;`}>
+              <span class="font-mono text-[10px] text-espresso-900/25 mt-0.5 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+              <div class="flex-1">
+                <p class="font-display text-sm sm:text-base font-bold tracking-tight uppercase text-espresso-900 group-hover:text-amber-600 transition-colors">{loc.name}</p>
+                <p class="font-mono text-[10px] text-espresso-900/35 tracking-wider mt-0.5 uppercase">{loc.area}</p>
+              </div>
+              <span class={`font-mono text-[9px] tracking-wider uppercase px-2 py-0.5 rounded-full border ${loc.status === 'Open' ? 'text-green-700 border-green-700/20 bg-green-50' : 'text-amber-600 border-amber-600/20 bg-amber-50'}`}>
+                {loc.status}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-8 flex items-center gap-4">
+          <span class="w-2 h-2 rounded-full bg-green-600"></span>
+          <div>
+            <p class="font-mono text-[10px] tracking-wider text-espresso-900/35 uppercase">Open Daily</p>
+            <p class="font-mono text-xs tracking-wider text-espresso-900/70 mt-0.5">10:00 AM — 12:00 AM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

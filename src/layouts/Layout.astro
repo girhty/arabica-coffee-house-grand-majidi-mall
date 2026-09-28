@@ -1,0 +1,188 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const brandName = "Arabica Coffee House";
+const location = "Grand Majidi Mall";
+const profilePicUrl = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-19/612495344_17984483060939626_5061421053079249411_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=100&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=OXoIxuUXvfsQ7kNvwEy3GwH&_nc_oc=AdoIqy6hW2ZfKYDoMfbT4jaaMd-vjVhvLnwmKPFSRBB9c2fS66CoTaQS27wayTHUmq8&_nc_zt=24&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=veTTgm5Ia6GITUKkUtBn-g&_nc_ss=7ba8c&oh=00_AQMPFEbRfKizVI0WwyiCXradEL89XU5fTDi87SQQB7XaJw&oe=6ABF8405";
+---
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="theme-color" content="#070707" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <title>{title}</title>
+  <style is:global>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-family: 'Inter', system-ui, sans-serif; background: #070707; color: #fff; -webkit-font-smoothing: antialiased; }
+    ::selection { background: #D58C3D; color: #070707; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #070707; }
+    ::-webkit-scrollbar-thumb { background: #6E3E22; border-radius: 3px; }
+    .clip-reveal { clip-path: inset(0 0 100% 0); transition: clip-path 0.9s cubic-bezier(0.76, 0, 0.24, 1); }
+    .clip-reveal.revealed { clip-path: inset(0 0 0% 0); }
+    .clip-reveal-right { clip-path: inset(0 100% 0 0); transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1); }
+    .clip-reveal-right.revealed { clip-path: inset(0 0% 0 0); }
+    .reveal-item { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal-item.revealed { opacity: 1; transform: translateY(0); }
+    .tilt-card { transition: transform 0.15s ease-out; transform-style: preserve-3d; }
+    .gradient-text { background: linear-gradient(135deg, #D58C3D 0%, #C69B6E 50%, #E0A356 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .liquid-bg { background: linear-gradient(135deg, #110B07 0%, #2C1A11 40%, #6E3E22 70%, #C69B6E 100%); }
+    .ambient-glow { position: absolute; width: 600px; height: 600px; border-radius: 50%; filter: blur(120px); opacity: 0.15; pointer-events: none; }
+    @keyframes grainShift { 0%, 100% { transform: translate(0,0); } 10% { transform: translate(-2%,-2%); } 30% { transform: translate(3%,1%); } 50% { transform: translate(-1%,3%); } 70% { transform: translate(2%,-3%); } 90% { transform: translate(-3%,1%); } }
+    .grain-overlay::after { content:''; position:absolute; inset:0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); background-size: 256px 256px; animation: grainShift 8s steps(10) infinite; pointer-events:none; z-index:1; }
+  </style>
+</head>
+<body class="bg-espresso-900 text-white overflow-x-hidden">
+  <slot />
+  <script is:inline>
+    // ─── PRELOADER ───
+    (function() {
+      const preloader = document.getElementById('preloader');
+      const counter = document.getElementById('preloader-counter');
+      const cupFill = document.getElementById('cup-fill');
+      let count = 0;
+      const interval = setInterval(() => {
+        count += Math.floor(Math.random() * 8) + 2;
+        if (count >= 100) { count = 100; clearInterval(interval); }
+        if (counter) counter.textContent = String(count).padStart(3, '0');
+        if (cupFill) cupFill.style.clipPath = `inset(${100 - count}% 0 0 0)`;
+        if (count >= 100) {
+          setTimeout(() => {
+            if (preloader) { preloader.classList.add('animate-slide-down'); setTimeout(() => { preloader.style.display = 'none'; }, 900); }
+            initRevealAnimations();
+          }, 500);
+        }
+      }, 40);
+    })();
+
+    // ─── REVEAL ANIMATIONS ───
+    function initRevealAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+      document.querySelectorAll('.clip-reveal, .clip-reveal-right, .reveal-item').forEach(el => observer.observe(el));
+    }
+
+    // ─── HEADER COLOR INVERSION ───
+    (function() {
+      const header = document.getElementById('site-header');
+      if (!header) return;
+      const darkSections = ['hero-section', 'philosophy-section', 'order-section', 'preloader'];
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (darkSections.includes(entry.target.id)) {
+              header.classList.remove('header-light');
+              header.classList.add('header-dark');
+            } else {
+              header.classList.remove('header-dark');
+              header.classList.add('header-light');
+            }
+          }
+        });
+      }, { threshold: 0.3 });
+      document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+      header.classList.add('header-dark');
+    })();
+
+    // ─── 3D TILT ON CARDS ───
+    document.addEventListener('mousemove', (e) => {
+      document.querySelectorAll('.tilt-card').forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        if (x >= -50 && x <= rect.width + 50 && y >= -50 && y <= rect.height + 50) {
+          const rotateX = ((y / rect.height) - 0.5) * -8;
+          const rotateY = ((x / rect.width) - 0.5) * 8;
+          card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02,1.02,1.02)`;
+        }
+      });
+    });
+    document.querySelectorAll('.tilt-card').forEach(card => {
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale3d(1,1,1)';
+      });
+    });
+
+    // ─── MOBILE MENU ───
+    function toggleMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      const btn = document.getElementById('menu-btn');
+      if (drawer && btn) {
+        const isOpen = drawer.style.transform === 'translateX(0)';
+        drawer.style.transform = isOpen ? 'translateX(100%)' : 'translateX(0)';
+        btn.classList.toggle('open');
+      }
+    }
+
+    // ─── SMOOTH SCROLL ───
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const drawer = document.getElementById('mobile-drawer');
+          if (drawer) drawer.style.transform = 'translateX(100%)';
+          const btn = document.getElementById('menu-btn');
+          if (btn) btn.classList.remove('open');
+        }
+      });
+    });
+
+    // ─── RECEIPT SCROLL ───
+    (function() {
+      const orderSection = document.getElementById('order-section');
+      const receipt = document.getElementById('receipt-paper');
+      if (!orderSection || !receipt) return;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            window.addEventListener('scroll', handleReceiptScroll);
+          } else {
+            window.removeEventListener('scroll', handleReceiptScroll);
+          }
+        });
+      }, { threshold: 0 });
+      obs.observe(orderSection);
+      function handleReceiptScroll() {
+        const rect = orderSection.getBoundingClientRect();
+        const progress = Math.max(0, Math.min(1, -rect.top / (rect.height * 0.6)));
+        receipt.style.clipPath = `inset(0 0 ${(1 - progress) * 100}% 0)`;
+      }
+    })();
+
+    // ─── PARALLAX ───
+    (function() {
+      const parallaxElements = document.querySelectorAll('[data-parallax]');
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        parallaxElements.forEach(el => {
+          const speed = parseFloat(el.dataset.parallax) || 0.3;
+          const rect = el.getBoundingClientRect();
+          const offset = (rect.top + scrollY) * speed - scrollY * speed;
+          el.style.transform = `translateY(${offset}px)`;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

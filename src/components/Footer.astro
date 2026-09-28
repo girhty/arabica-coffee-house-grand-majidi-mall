@@ -1,0 +1,155 @@
+---
+const footerColumns = [
+  {
+    heading: 'Menu',
+    links: [
+      { label: 'COFFEE', href: '#menu' },
+      { label: 'NON-COFFEE', href: '#menu' },
+      { label: 'FOOD', href: '#menu' },
+      { label: 'SPECIALS', href: '#menu' },
+    ],
+  },
+  {
+    heading: 'Company',
+    links: [
+      { label: 'OUR STORY', href: '#story' },
+      { label: 'LOCATIONS', href: '#locations' },
+      { label: 'CAREERS', href: '#' },
+      { label: 'PRESS', href: '#' },
+    ],
+  },
+  {
+    heading: 'Connect',
+    links: [
+      { label: 'CONTACT US', href: 'tel:+9647509308185' },
+      { label: 'INSTAGRAM', href: 'https://instagram.com/arabicacoffeehouse_iraq' },
+      { label: 'TIKTOK', href: '#' },
+      { label: 'WHATSAPP', href: '#' },
+    ],
+  },
+];
+
+const locations = [
+  { area: 'Erbil', name: 'Grand Majidi Mall' },
+  { area: 'Erbil', name: 'Boulevard' },
+  { area: 'Erbil', name: 'Empire Square' },
+  { area: 'Erbil', name: 'Trade Center' },
+  { area: 'Sulaymaniyah', name: 'Garden Avenue' },
+];
+---
+<footer class="relative bg-espresso-900 pt-20 sm:pt-24 pb-8 overflow-hidden">
+  <!-- Background swirl -->
+  <div class="absolute inset-0 opacity-[0.03]">
+    <svg viewBox="0 0 1440 600" class="w-full h-full" preserveAspectRatio="xMidYMid slice">
+      <path d="M-200,300 C100,100 400,500 700,250 C1000,0 1300,400 1640,300" stroke="#C69B6E" stroke-width="200" fill="none" opacity="0.3"/>
+    </svg>
+  </div>
+
+  <div class="relative z-10 max-w-[1440px] mx-auto px-6 sm:px-10">
+    <!-- Top Row -->
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 pb-12 border-b border-white/[0.08]">
+      <!-- Brand -->
+      <div class="lg:col-span-4">
+        <div class="clip-reveal" style="transition-delay:0.1s;">
+          <div class="flex items-center gap-3 mb-4">
+            <img
+              src="https://scontent-ams2-1.cdninstagram.com/v/t51.82787-19/612495344_17984483060939626_5061421053079249411_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=100&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=OXoIxuUXvfsQ7kNvwEy3GwH&_nc_oc=AdoIqy6hW2ZfKYDoMfbT4jaaMd-vjVhvLnwmKPFSRBB9c2fS66CoTaQS27wayTHUmq8&_nc_zt=24&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=veTTgm5Ia6GITUKkUtBn-g&_nc_ss=7ba8c&oh=00_AQMPFEbRfKizVI0WwyiCXradEL89XU5fTDi87SQQB7XaJw&oe=6ABF8405"
+              alt="Arabica Coffee House"
+              class="w-10 h-10 rounded-full object-cover border border-white/10"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            />
+            <div>
+              <p class="font-display text-base font-bold tracking-tight uppercase text-white">Arabica</p>
+              <p class="font-mono text-[9px] text-white/30 tracking-wider uppercase">Coffee House</p>
+            </div>
+          </div>
+          <p class="font-body text-sm text-white/35 leading-relaxed max-w-xs">
+            The proof is in the cup. Specialty coffee, crafted with care across Iraq.
+          </p>
+        </div>
+      </div>
+
+      <!-- Navigation Columns -->
+      {footerColumns.map((col, i) => (
+        <div class="lg:col-span-2">
+          <div class="reveal-item" style={`transition-delay: ${0.15 + i * 0.1}s;`}>
+            <p class="font-mono text-[10px] tracking-[0.2em] text-white/25 uppercase mb-4">{col.heading}</p>
+            <ul class="space-y-2.5">
+              {col.links.map(link => (
+                <li>
+                  <a href={link.href} class="font-mono text-[11px] tracking-wider text-white/45 hover:text-amber-500 transition-colors uppercase block group">
+                    <span class="border-b border-transparent group-hover:border-amber-500/40 pb-0.5 transition-colors">{link.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+
+      <!-- Contact -->
+      <div class="lg:col-span-2">
+        <div class="reveal-item" style="transition-delay:0.45s;">
+          <p class="font-mono text-[10px] tracking-[0.2em] text-white/25 uppercase mb-4">Contact</p>
+          <ul class="space-y-2.5">
+            <li>
+              <a href="tel:+9647509308185" class="font-mono text-[11px] tracking-wider text-white/45 hover:text-amber-500 transition-colors">
+                +964 750 930 8185
+              </a>
+            </li>
+            <li>
+              <a href="mailto:hello@arabicacoffeehouse.com" class="font-mono text-[11px] tracking-wider text-white/45 hover:text-amber-500 transition-colors">
+                hello@arabicacoffeehouse.com
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Locations Row -->
+    <div class="py-8 border-b border-white/[0.08]">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse-dot shadow-[0_0_8px_rgba(213,140,61,0.5)]"></span>
+        <p class="font-mono text-[10px] tracking-[0.2em] text-white/25 uppercase">Our Locations</p>
+      </div>
+      <div class="flex flex-wrap gap-x-0 gap-y-3">
+        {locations.map((loc, i) => (
+          <div class={`flex items-baseline gap-2 ${i < locations.length - 1 ? 'pr-6 mr-6 border-r border-white/[0.08]' : ''}`}>
+            <span class="font-mono text-[9px] text-white/15">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <span class="font-mono text-[11px] text-white/40">{loc.area}</span>
+              <span class="font-mono text-[10px] text-white/20 mx-1">/</span>
+              <span class="font-mono text-[10px] text-white/25">{loc.name}</span>
+            </div>
+          </div>
+        ))}
+        <div class="flex items-baseline gap-2">
+          <span class="font-mono text-[9px] text-white/15">—</span>
+          <span class="font-mono text-[10px] text-amber-500/50">Open Daily 10:00 AM — 12:00 AM</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Legal Row -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6">
+      <p class="font-mono text-[10px] text-white/20 tracking-wider">
+        © 2025 ARABICA COFFEE HOUSE. ALL RIGHTS RESERVED.
+      </p>
+      <div class="flex items-center gap-6">
+        <a href="https://instagram.com/arabicacoffeehouse_iraq" target="_blank" rel="noopener" class="font-mono text-[10px] text-white/25 hover:text-amber-500 tracking-wider transition-colors uppercase">
+          Instagram
+        </a>
+        <span class="text-white/10">·</span>
+        <a href="#" class="font-mono text-[10px] text-white/25 hover:text-amber-500 tracking-wider transition-colors uppercase">
+          TikTok
+        </a>
+        <span class="text-white/10">·</span>
+        <a href="#" class="font-mono text-[10px] text-white/25 hover:text-amber-500 tracking-wider transition-colors uppercase">
+          Privacy Policy
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

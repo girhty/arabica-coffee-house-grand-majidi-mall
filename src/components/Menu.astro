@@ -1,0 +1,113 @@
+---
+const menuItems = [
+  {
+    index: '01',
+    name: 'Espresso',
+    description: 'Double shot, bold and rich',
+    price: '2,500 IQD',
+    image: 'https://lh3.googleusercontent.com/grass-cs/AABkmLcVd6UEqDJyz9u4L85FWcqDVsFdmc11NN5JutTBEQF_3ez0HMFCbnq3J4naGdvbNcnSEVmLHDCUP4iXObRsJiCiQzsKSNls22IKA2V7ogsUDraSLYZQwksmSMRd4Sj71cv4sEo=w300-h225-p-k-no',
+  },
+  {
+    index: '02',
+    name: 'Latte',
+    description: 'Smooth with signature art',
+    price: '4,500 IQD',
+    image: 'https://lh3.googleusercontent.com/grass-cs/AABkmLfm5d7R08-bKIasswmLXCP7fIZT28Megbml28-tukaYYW5gj1vRbp3Y_P17bhqCLQPheBnzTOrgoqTHmzHWMa_R3IruwgzEux_z5ABKs_KxAp5K7ikvi6hMtRLJ3b7ZodJP7LavJQ=w300-h225-p-k-no',
+  },
+  {
+    index: '03',
+    name: 'Iced Coffee',
+    description: 'Refreshing cold brew',
+    price: '5,000 IQD',
+    image: 'https://lh3.googleusercontent.com/grass-cs/AABkmLcuBen0ndrwlyoO-d1LJxU2dpWkkjzIJlRaZL7NVh67uq5tfvJDq545fh9WFR1-qKS6SRuORWNbH-hmGcN3CbpPF68-cvyFy9y9GvGrI3TDi7N1VqpNuVHNzUn-gCP9PdmvJ7c=w300-h225-p-k-no',
+  },
+  {
+    index: '04',
+    name: 'Cinnamon Roll',
+    description: 'Freshly baked daily',
+    price: '4,000 IQD',
+    image: 'https://lh3.googleusercontent.com/grass-cs/AABkmLceIxkN0W3FiNF_TxIol79MHIg8zeVDl51UfKd9SgA64-0shAVItGDVKv3mDDIRoqxFpFb53GC5bvQvNAKHOfW7nBEi0ShRlcI0nN_zBBla1p_z8wS5jWSap9YcllveZxQMoVcr1Q=w300-h225-p-k-no',
+  },
+];
+---
+<section id="menu" class="relative bg-bone-100 py-24 sm:py-32 overflow-hidden">
+  <!-- Background swirl texture -->
+  <div class="absolute inset-0 opacity-[0.03]">
+    <svg viewBox="0 0 1440 800" class="w-full h-full" preserveAspectRatio="xMidYMid slice">
+      <path d="M-100,400 C200,200 400,600 700,300 C1000,0 1200,500 1540,400" stroke="#070707" stroke-width="200" fill="none" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <div class="relative z-10 max-w-[1440px] mx-auto px-6 sm:px-10">
+    <!-- Header -->
+    <div class="grid lg:grid-cols-12 gap-8 items-end mb-16 sm:mb-20">
+      <div class="lg:col-span-8">
+        <p class="clip-reveal-right font-mono text-[11px] sm:text-xs tracking-[0.2em] text-espresso-900/35 uppercase mb-4" style="transition-delay:0.1s;">
+          // Our Menu
+        </p>
+        <h2 class="clip-reveal font-display text-[36px] sm:text-[48px] md:text-[60px] lg:text-[72px] font-black tracking-tighter leading-[0.95] text-espresso-900 uppercase" style="transition-delay:0.25s;">
+          FAVORITES MADE<br />DAILY
+        </h2>
+      </div>
+      <div class="lg:col-span-4">
+        <div class="clip-reveal" style="transition-delay:0.4s;">
+          <p class="font-body text-sm sm:text-base text-espresso-900/50 leading-relaxed mb-4 max-w-sm">
+            Quality ingredients, carefully prepared. Simple, balanced and made to enjoy.
+          </p>
+          <a href="#menu" class="group relative inline-flex items-center gap-2 font-mono text-xs tracking-wider uppercase text-espresso-900 hover:text-amber-600 transition-colors">
+            <span class="border-b border-espresso-900/20 group-hover:border-amber-600/40 pb-0.5 transition-colors">View Full Menu</span>
+            <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Cards Grid -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      {menuItems.map((item, i) => (
+        <div class="tilt-card group relative bg-white border border-espresso-900/8 rounded-2xl overflow-hidden transition-shadow hover:shadow-xl hover:shadow-espresso-900/5" style={`transition-delay: ${i * 0.1}s`}>
+          <!-- Index -->
+          <div class="absolute top-3 left-3 sm:top-4 sm:left-4 z-10">
+            <span class="font-mono text-[10px] sm:text-xs text-espresso-900/25 tracking-wider">{item.index}</span>
+          </div>
+          
+          <!-- Image -->
+          <div class="relative aspect-square overflow-hidden bg-bone-200/50">
+            <img
+              src={item.image}
+              alt={item.name}
+              class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-bone-100/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          </div>
+
+          <!-- Info -->
+          <div class="p-4 sm:p-5">
+            <div class="flex items-end justify-between gap-2">
+              <div>
+                <h3 class="font-display text-sm sm:text-base font-bold tracking-tight uppercase text-espresso-900">{item.name}</h3>
+                <p class="font-body text-[11px] text-espresso-900/40 mt-0.5">{item.description}</p>
+              </div>
+              <span class="font-mono text-xs sm:text-sm font-bold text-amber-600 whitespace-nowrap">{item.price}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Google Rating Badge -->
+    <div class="mt-12 sm:mt-16 flex flex-wrap items-center gap-6 justify-center lg:justify-start">
+      <div class="flex items-center gap-3 bg-white border border-espresso-900/8 rounded-full px-5 py-2.5">
+        <span class="text-amber-500 text-lg">⭐</span>
+        <div class="flex flex-col">
+          <span class="font-display text-sm font-bold text-espresso-900">4.2</span>
+          <span class="font-mono text-[9px] text-espresso-900/40 tracking-wider uppercase">Google Reviews</span>
+        </div>
+        <span class="text-espresso-900/10 mx-1">|</span>
+        <span class="font-mono text-[10px] text-espresso-900/50">245 reviews</span>
+      </div>
+    </div>
+  </div>
+</section>

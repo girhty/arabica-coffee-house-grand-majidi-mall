@@ -1,0 +1,73 @@
+---
+---
+<section id="story" class="relative min-h-screen flex flex-col justify-center overflow-hidden grain-overlay">
+  <!-- Dark surface -->
+  <div class="absolute inset-0 bg-espresso-900"></div>
+  <div class="ambient-glow bg-espresso-500/20 top-0 right-0"></div>
+  <div class="ambient-glow bg-amber-500/8 bottom-0 left-1/3"></div>
+
+  <!-- Vertical scrim -->
+  <div class="absolute inset-0 bg-gradient-to-b from-espresso-900 via-transparent to-espresso-900"></div>
+
+  <div class="relative z-10 max-w-[1440px] mx-auto px-6 sm:px-10 py-24 sm:py-32">
+    
+    <!-- Main Headline -->
+    <div class="mb-16 sm:mb-20">
+      <div class="overflow-hidden mb-2">
+        <h2 class="clip-reveal font-display text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] font-black tracking-tighter leading-[1.0] uppercase text-white" style="transition-delay:0.2s;">
+          THE CITY NEVER STOPS.
+        </h2>
+      </div>
+      <div class="overflow-hidden">
+        <h2 class="clip-reveal font-display text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] font-black tracking-tighter leading-[1.0] uppercase text-white" style="transition-delay:0.35s;">
+          YOUR COFFEE SHOULDN'T<br class="hidden sm:block" /> SLOW YOU DOWN.
+        </h2>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <!-- Center: Cup Visual -->
+      <div class="lg:col-span-4 flex justify-center order-1 lg:order-2">
+        <div class="relative reveal-item" style="transition-delay:0.4s;">
+          <div class="w-[220px] sm:w-[280px] aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-espresso-500/20 animate-float">
+            <img
+              src="https://lh3.googleusercontent.com/grass-cs/AABkmLcMAzForI6lB0maY7YQkexIAVR5FESta8cA0hbgFOoUwC0BBxBSiaPRXAlp3PJHEhrZ725esFtx-BRE-4-zoqByIUufWtGR4c64y_zEOfBIba3t_RnBc_jf6xBiFaF3IoPOv9yhefN2TqKJ=w300-h450-p-k-no"
+              alt="Arabica Coffee Cup"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-espresso-900/60 via-transparent to-transparent"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Left: Eyebrow + Narrative -->
+      <div class="lg:col-span-5 order-2 lg:order-1">
+        <p class="clip-reveal-right font-mono text-[11px] tracking-[0.2em] text-white/30 uppercase mb-6" style="transition-delay:0.3s;">
+          // Our Philosophy
+        </p>
+        <div class="clip-reveal" style="transition-delay:0.5s;">
+          <p class="font-body text-sm sm:text-base text-white/50 leading-relaxed max-w-lg">
+            Stay for a conversation or leave with the cup in your hand — both work, neither takes any effort. Nothing here is rushed, and nothing keeps you longer than you meant to stay. We believe great coffee should fit into your life, not the other way around.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: Claims -->
+      <div class="lg:col-span-3 order-3">
+        <div class="flex flex-col gap-4">
+          <div class="reveal-item" style="transition-delay:0.6s;">
+            <p class="font-mono text-sm sm:text-base tracking-wider uppercase text-white/80 border-l-2 border-amber-500 pl-4 py-1">GOOD COFFEE.</p>
+          </div>
+          <div class="reveal-item" style="transition-delay:0.7s;">
+            <p class="font-mono text-sm sm:text-base tracking-wider uppercase text-white/80 border-l-2 border-amber-500 pl-4 py-1">NO CEREMONY.</p>
+          </div>
+          <div class="reveal-item" style="transition-delay:0.8s;">
+            <p class="font-mono text-sm sm:text-base tracking-wider uppercase text-white/80 border-l-2 border-amber-500 pl-4 py-1">NO WAITING.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

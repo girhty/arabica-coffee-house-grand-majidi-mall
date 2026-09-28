@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Preloader from '../components/Preloader.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Menu from '../components/Menu.astro';
+import Locations from '../components/Locations.astro';
+import Philosophy from '../components/Philosophy.astro';
+import Order from '../components/Order.astro';
+import Testimonials from '../components/Testimonials.astro';
+import InstagramFeed from '../components/InstagramFeed.astro';
+import Footer from '../components/Footer.astro';
+
+const siteTitle = "Arabica Coffee House | Grand Majidi Mall, Erbil";
+const siteDescription = "Specialty coffee house at Grand Majidi Mall, Erbil. Premium brewed coffee, handcrafted beverages, and delicious bites. The proof is in the cup. ⭐ 4.2 on Google Reviews.";
+---
+<Layout title={siteTitle} description={siteDescription}>
+  <Preloader />
+  <Header />
+  <main>
+    <Hero />
+    <Menu />
+    <InstagramFeed />
+    <Locations />
+    <Philosophy />
+    <Testimonials />
+    <Order />
+  </main>
+  <Footer />
+</Layout>

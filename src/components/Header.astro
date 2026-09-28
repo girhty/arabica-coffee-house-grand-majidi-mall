@@ -1,0 +1,80 @@
+---
+const navLinks = [
+  { label: 'SHOP', href: '#shop' },
+  { label: 'MENU', href: '#menu' },
+  { label: 'OUR STORY', href: '#story' },
+  { label: 'LOCATIONS', href: '#locations' },
+];
+const profilePicUrl = "https://scontent-ams2-1.cdninstagram.com/v/t51.82787-19/612495344_17984483060939626_5061421053079249411_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=100&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=OXoIxuUXvfsQ7kNvwEy3GwH&_nc_oc=AdoIqy6hW2ZfKYDoMfbT4jaaMd-vjVhvLnwmKPFSRBB9c2fS66CoTaQS27wayTHUmq8&_nc_zt=24&_nc_ht=scontent-ams2-1.cdninstagram.com&_nc_gid=veTTgm5Ia6GITUKkUtBn-g&_nc_ss=7ba8c&oh=00_AQMPFEbRfKizVI0WwyiCXradEL89XU5fTDi87SQQB7XaJw&oe=6ABF8405";
+---
+<header id="site-header" class="header-dark fixed top-3 left-3 right-3 sm:top-5 sm:left-8 sm:right-8 z-50 transition-colors duration-500">
+  <div class="relative flex items-center justify-between h-14 sm:h-16 px-4 sm:px-6 rounded-full backdrop-blur-md border transition-all duration-500
+    border-white/10 bg-espresso-900/60
+    header-light:border-espresso-900/10 header-light:bg-bone-100/80"
+    id="header-bar">
+    
+    <!-- Left: Nav Links (Desktop) -->
+    <nav class="hidden lg:flex items-center gap-6" aria-label="Main navigation">
+      {navLinks.map(link => (
+        <a href={link.href} class="font-mono text-[11px] tracking-wider uppercase transition-colors duration-300 hover:opacity-60 header-text">
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Center: Brand Mark -->
+    <a href="#" class="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 group" aria-label="Arabica Coffee House Home">
+      <img
+        src={profilePicUrl}
+        alt="Arabica Coffee House Logo"
+        class="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover border border-white/20 header-light:border-espresso-900/20"
+        loading="eager"
+        referrerpolicy="no-referrer"
+      />
+      <span class="hidden sm:block font-display text-xs sm:text-sm font-bold tracking-tight uppercase header-text">
+        Arabica
+      </span>
+    </a>
+
+    <!-- Right: CTA -->
+    <div class="flex items-center gap-3">
+      <a href="#order" class="hidden sm:flex items-center gap-2 font-mono text-[10px] sm:text-[11px] tracking-wider uppercase header-text transition-opacity hover:opacity-60">
+        <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse-dot shadow-[0_0_8px_rgba(213,140,61,0.6)]"></span>
+        ORDER ONLINE
+      </a>
+      <!-- Mobile Hamburger -->
+      <button id="menu-btn" class="lg:hidden flex flex-col gap-1.5 w-6 group" onclick="toggleMenu()" aria-label="Toggle menu">
+        <span class="block h-[1.5px] w-6 bg-white transition-all duration-300 group-open:rotate-45 group-open:translate-y-[5px] header-light-bar"></span>
+        <span class="block h-[1.5px] w-4 bg-white transition-all duration-300 group-open:opacity-0 header-light-bar"></span>
+        <span class="block h-[1.5px] w-6 bg-white transition-all duration-300 group-open:-rotate-45 group-open:-translate-y-[5px] header-light-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-drawer" class="lg:hidden fixed top-0 right-0 w-full h-screen bg-espresso-900/98 backdrop-blur-xl z-40 flex flex-col justify-center items-center transition-transform duration-500 ease-out" style="transform: translateX(100%);">
+    <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white/60 hover:text-white" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <nav class="flex flex-col gap-8 text-center" aria-label="Mobile navigation">
+      {navLinks.map((link, i) => (
+        <a href={link.href} class="group flex items-center gap-4">
+          <span class="font-mono text-[10px] text-white/30">{String(i + 1).padStart(2, '0')}</span>
+          <span class="font-display text-3xl sm:text-4xl font-bold tracking-tight uppercase text-white group-hover:text-amber-500 transition-colors">{link.label}</span>
+        </a>
+      ))}
+      <a href="#order" class="mt-6 inline-flex items-center gap-3 font-mono text-sm tracking-wider uppercase text-amber-500 border border-amber-500/30 rounded-full px-8 py-3 hover:bg-amber-500/10 transition-colors">
+        <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse-dot"></span>
+        ORDER NOW
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style is:global>
+  .header-dark .header-text { color: #ffffff; }
+  .header-light .header-text { color: #070707; }
+  .header-light #header-bar { background: rgba(241, 241, 239, 0.85); border-color: rgba(7,7,7,0.1); }
+  .header-light .header-light-bar { background: #070707; }
+  .header-dark .header-light-bar { background: #ffffff; }
+</style>
